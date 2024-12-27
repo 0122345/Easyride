@@ -2,7 +2,8 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { prisma } from '../index.js';
-import { sendOTP, sendPasswordResetEmail } from '../utils/email.js';
+import { sendOTP as sendOTPEmail } from '../utils/email.js';
+import { sendPasswordResetEmail as sendPasswordResetEmailLink } from '../utils/email.js';
 
 // Email and password signup
 export async function signup(req, res) {
@@ -52,7 +53,7 @@ export async function sendOTP(req, res) {
     }
   });
   
-  await sendOTP(email, code);
+  await sendOTPEmail(email, code);
   res.json({ message: 'OTP sent successfully' });
 }
 
@@ -102,7 +103,7 @@ export async function sendPasswordResetEmail(req, res) {
   });
   
   const resetLink = `${process.env.FRONTEND_URL}/reset-password?token=${token}`;
-  await sendPasswordResetEmail(email, resetLink);
+  await sendPasswordResetEmailLink(email, resetLink);
   res.json({ message: 'Password reset email sent' });
 }
 
@@ -128,4 +129,3 @@ export async function resetPassword(req, res) {
   await prisma.passwordReset.delete({ where: { id: resetRequest.id } });
   res.json({ message: 'Password reset successfully' });
 }
-

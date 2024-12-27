@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer';
 // Create a nodemailer transporter
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
-  port: parseInt(process.env.SMTP_PORT || '587'),
+  port: parseInt(process.env.SMTP_PORT),
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS
@@ -11,7 +11,7 @@ const transporter = nodemailer.createTransport({
 });
 
 // Send OTP email
-export async function sendOTP(email: string, otp: string) {
+export async function sendOTP(email, otp) {
   await transporter.sendMail({
     from: process.env.EMAIL_FROM,
     to: email,
@@ -21,7 +21,7 @@ export async function sendOTP(email: string, otp: string) {
 }
 
 // Send password reset email
-export async function sendPasswordResetEmail(email: string, resetLink: string) {
+export async function sendPasswordResetEmail(email, resetLink) {
   await transporter.sendMail({
     from: process.env.EMAIL_FROM,
     to: email,

@@ -1,6 +1,6 @@
 import express from 'express';
-import { signup,login } from '../controllers/AuthController';
-import passport from '../config/passport';
+import * as AuthController from '../controllers/AuthController.js';
+import passport from '../config/passport.js';
 
 const router = express.Router();
 
@@ -29,11 +29,11 @@ const router = express.Router();
  *                 type: string
  *     responses:
  *       200:
- *         description: User registered successfully
+ *         description: User registered successfully.
  *       400:
- *         description: Email already exists
+ *         description: Email already exists.
  */
-router.post('/signup', signup);
+router.post('/signup', AuthController.signup);
 
 /**
  * @swagger
@@ -57,11 +57,11 @@ router.post('/signup', signup);
  *                 type: string
  *     responses:
  *       200:
- *         description: Login successful
+ *         description: Login successful.
  *       400:
- *         description: Invalid credentials
+ *         description: Invalid credentials.
  */
-router.post('/login', login);
+router.post('/login', AuthController.login);
 
 /**
  * @swagger
@@ -69,11 +69,22 @@ router.post('/login', login);
  *   post:
  *     summary: Send OTP to user
  *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - email
+ *             properties:
+ *               email:
+ *                 type: string
  *     responses:
  *       200:
- *         description: OTP sent successfully
+ *         description: OTP sent successfully.
  *       400:
- *         description: Invalid email
+ *         description: Invalid email.
  */
 router.post('/otp/send', AuthController.sendOTP);
 
@@ -96,9 +107,9 @@ router.post('/otp/send', AuthController.sendOTP);
  *                 type: string
  *     responses:
  *       200:
- *         description: OTP verified successfully
+ *         description: OTP verified successfully.
  *       400:
- *         description: Invalid OTP
+ *         description: Invalid OTP.
  */
 router.post('/otp/verify', AuthController.verifyOTP);
 
@@ -110,7 +121,7 @@ router.post('/otp/verify', AuthController.verifyOTP);
  *     tags: [Auth]
  *     responses:
  *       200:
- *         description: Redirect to Google authentication
+ *         description: Redirect to Google authentication.
  */
 router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
@@ -122,9 +133,9 @@ router.get('/google', passport.authenticate('google', { scope: ['profile', 'emai
  *     tags: [Auth]
  *     responses:
  *       200:
- *         description: Google login successful
+ *         description: Google login successful.
  *       400:
- *         description: Google login failed
+ *         description: Google login failed.
  */
 router.get('/google/callback', passport.authenticate('google', { session: false }), AuthController.socialLogin);
 
@@ -136,7 +147,7 @@ router.get('/google/callback', passport.authenticate('google', { session: false 
  *     tags: [Auth]
  *     responses:
  *       200:
- *         description: Redirect to Facebook authentication
+ *         description: Redirect to Facebook authentication.
  */
 router.get('/facebook', passport.authenticate('facebook', { scope: ['email'] }));
 
@@ -148,9 +159,9 @@ router.get('/facebook', passport.authenticate('facebook', { scope: ['email'] }))
  *     tags: [Auth]
  *     responses:
  *       200:
- *         description: Facebook login successful
+ *         description: Facebook login successful.
  *       400:
- *         description: Facebook login failed
+ *         description: Facebook login failed.
  */
 router.get('/facebook/callback', passport.authenticate('facebook', { session: false }), AuthController.socialLogin);
 
@@ -162,7 +173,7 @@ router.get('/facebook/callback', passport.authenticate('facebook', { session: fa
  *     tags: [Auth]
  *     responses:
  *       200:
- *         description: Redirect to Apple authentication
+ *         description: Redirect to Apple authentication.
  */
 router.get('/apple', passport.authenticate('apple'));
 
@@ -174,9 +185,9 @@ router.get('/apple', passport.authenticate('apple'));
  *     tags: [Auth]
  *     responses:
  *       200:
- *         description: Apple login successful
+ *         description: Apple login successful.
  *       400:
- *         description: Apple login failed
+ *         description: Apple login failed.
  */
 router.get('/apple/callback', passport.authenticate('apple', { session: false }), AuthController.socialLogin);
 
@@ -199,9 +210,9 @@ router.get('/apple/callback', passport.authenticate('apple', { session: false })
  *                 type: string
  *     responses:
  *       200:
- *         description: Password reset email sent successfully
+ *         description: Password reset email sent successfully.
  *       400:
- *         description: Invalid email
+ *         description: Invalid email.
  */
 router.post('/password/reset', AuthController.sendPasswordResetEmail);
 
@@ -227,9 +238,9 @@ router.post('/password/reset', AuthController.sendPasswordResetEmail);
  *                 type: string
  *     responses:
  *       200:
- *         description: Password reset successfully
+ *         description: Password reset successfully.
  *       400:
- *         description: Invalid token or password
+ *         description: Invalid token or password.
  */
 router.post('/password/reset/confirm', AuthController.resetPassword);
 

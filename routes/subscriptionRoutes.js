@@ -1,6 +1,6 @@
 import express from 'express';
-import SubscriptionController from '../controllers/SubscriptionController';
-import { authenticateJWT } from '../middleware/auth';
+import * as SubscriptionController from '../controllers/SubscriptionController.js';
+import { authenticateJWT } from '../middleware/auth.js';
 
 const router = express.Router();
 
