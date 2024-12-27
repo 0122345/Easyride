@@ -4,9 +4,9 @@ const options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Uber-like Clone API',
+      title: 'EASY ride API',
       version: '1.0.0',
-      description: 'API documentation for the Uber-like clone backend',
+      description: 'API documentation for the EASY ride backend',
     },
     servers: [
       {

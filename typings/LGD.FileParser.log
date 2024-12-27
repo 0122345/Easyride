@@ -1,2 +1,21 @@
 Stop logging by changing setting "lgd.options.createDebugLog"
 If you have any problems or requests please create an issue on Github.
+
+c:\Users\dushi\OneDrive\Desktop\easyridebackend\config\swagger.js: 
+
+INFO: 
+      {
+        url: 'http://localhost:3000',
+        description: 'Development server',
+      },
+    ],
+  },
+  apis: ['./src/routes/*.ts'], // Path to the API routes files | No array of array implemented yet.
+INFO: 
+      {
+        url: 'http://localhost:3000',
+        description: 'Development server',
+      },
+    ],
+  },
+  apis: ['./src/routes/*.ts'], // Path to the API routes files | No array of array implemented yet.

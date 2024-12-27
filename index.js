@@ -3,11 +3,11 @@ import dotenv from 'dotenv';
 import { PrismaClient } from '@prisma/client';
 import swaggerUi from 'swagger-ui-express';
 import { swaggerSpec } from './config/swagger.js';
-import authRoutes from './routes/authRoutes.js';
-import userRoutes from './routes/userRoutes.js';
-import carRoutes from './routes/carRoutes.js';
-import subscriptionRoutes from './routes/subscriptionRoutes.js';
-import { setupSocketIO } from './socketio.js';
+// import authRoutes from './routes/authRoutes.js';
+// import userRoutes from './routes/userRoutes.js';
+// import carRoutes from './routes/carRoutes.js';
+// import subscriptionRoutes from './routes/subscriptionRoutes.js';
+// import { setupSocketIO } from './socketio.js';
 
 // Load environment variables
 dotenv.config();
@@ -21,14 +21,14 @@ export const prisma = new PrismaClient();
 // Middleware
 app.use(express.json());
 
-// Swagger documentation route
+// // Swagger documentation route
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-// Routes
-app.use('/auth', authRoutes);
-app.use('/user', userRoutes);
-app.use('/car', carRoutes);
-app.use('/subscription', subscriptionRoutes);
+// // Routes
+// app.use('/auth', authRoutes);
+// app.use('/user', userRoutes);
+// app.use('/car', carRoutes);
+// app.use('/subscription', subscriptionRoutes);
 
 // Start server
 const PORT = process.env.PORT || 3000;
@@ -38,5 +38,5 @@ const server = app.listen(PORT, () => {
 });
 
 // Setup Socket.IO
-setupSocketIO(server);
+// setupSocketIO(server);
 

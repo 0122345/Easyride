@@ -1,5 +1,5 @@
 import express from 'express';
-import AuthController from '../controllers/AuthController';
+import { signup,login } from '../controllers/AuthController';
 import passport from '../config/passport';
 
 const router = express.Router();
@@ -33,7 +33,7 @@ const router = express.Router();
  *       400:
  *         description: Email already exists
  */
-router.post('/signup', AuthController.signup);
+router.post('/signup', signup);
 
 /**
  * @swagger
@@ -61,7 +61,7 @@ router.post('/signup', AuthController.signup);
  *       400:
  *         description: Invalid credentials
  */
-router.post('/login', AuthController.login);
+router.post('/login', login);
 
 /**
  * @swagger
@@ -234,4 +234,3 @@ router.post('/password/reset', AuthController.sendPasswordResetEmail);
 router.post('/password/reset/confirm', AuthController.resetPassword);
 
 export default router;
-
