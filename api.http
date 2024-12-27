@@ -1,0 +1,107 @@
+@baseUrl = http://localhost:3000
+@authToken = your_auth_token_here
+
+### Signup
+POST {{baseUrl}}/auth/signup
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "password123",
+  "name": "Test User"
+}
+
+### Login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "password123"
+}
+
+### Send OTP
+POST {{baseUrl}}/auth/otp/send
+Content-Type: application/json
+
+{
+  "email": "test@example.com"
+}
+
+### Verify OTP
+POST {{baseUrl}}/auth/otp/verify
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "code": "123456"
+}
+
+### Get User Profile
+GET {{baseUrl}}/user/profile
+Authorization: Bearer {{authToken}}
+
+### Update User Profile
+PUT {{baseUrl}}/user/profile
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "name": "Updated Name"
+}
+
+### Subscribe to News
+POST {{baseUrl}}/user/subscribe
+Authorization: Bearer {{authToken}}
+
+### Unsubscribe from News
+POST {{baseUrl}}/user/unsubscribe
+Authorization: Bearer {{authToken}}
+
+### Add a New Car
+POST {{baseUrl}}/car
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "model": "Toyota Camry",
+  "plate": "ABC123",
+  "latitude": 40.7128,
+  "longitude": -74.0060
+}
+
+### Update Car Location
+PUT {{baseUrl}}/car/1/location
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "latitude": 40.7129,
+  "longitude": -74.0061
+}
+
+### Get Active Cars
+GET {{baseUrl}}/car/active
+
+### Get Subscription Status
+GET {{baseUrl}}/subscription/status
+Authorization: Bearer {{authToken}}
+
+### Charge Credits
+POST {{baseUrl}}/subscription/charge
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "credits": 10
+}
+
+### Add Credits
+POST {{baseUrl}}/subscription/add-credits
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "credits": 20
+}
+
