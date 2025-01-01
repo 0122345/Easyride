@@ -1,6 +1,6 @@
 import express from 'express';
-import * as CarController from '../controllers/CarController.js';
-import { authenticateJWT } from '../middleware/auth.js';
+import * as CarController from '../backend/controllers/CarController.js';
+import { authenticateJWT } from '../backend/middleware/auth.js';
 
 const router = express.Router();
 

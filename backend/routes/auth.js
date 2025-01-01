@@ -1,9 +1,9 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { prisma } from '../index';
-import { sendOTP, sendPasswordResetEmail } from '../utils/email';
-import passport from '../config/';
+import { prisma } from '../../index';
+import { sendOTP, sendPasswordResetEmail } from '../../utils/email';
+import passport from '../backend/config';
 
 const router = express.Router();
 
