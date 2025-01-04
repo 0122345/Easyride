@@ -1,3 +1,4 @@
+import 'package:eazyride_mobile/components/auth/welcm.dart';
 import 'package:flutter/material.dart';
 
 class Homepage extends StatelessWidget {
@@ -58,11 +59,17 @@ class Homepage extends StatelessWidget {
                       ),
                    ),
                     SizedBox(height:10),
-                   Text('Skip for now',
-                    style: TextStyle(
-                      fontSize: 12,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context, MaterialPageRoute(builder: (context) => WelcmScreen()));
+                      },
+                      child: Text('Skip for now',
+                      style: TextStyle(
+                        fontSize: 12,
+                      ),
+                                         ),
                     ),
-                   ),
                     SizedBox(height:40),
                 ],
               ),
