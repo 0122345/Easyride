@@ -24,21 +24,19 @@ class WelcmScreen extends StatelessWidget {
                   'Welcome',
                   style: TextStyle(
                     fontSize: 25,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 SizedBox(height: 10),
                 Text(
                   'Have a better sharing experience',
-                  style: TextStyle(
-                    fontSize: 12,
-                  ),
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
                 ),
                 SizedBox(height: 50),
                 GestureDetector(
                   onTap: () {
                     Navigator.push(context,
-                        MaterialPageRoute(
-                          builder: (context) =>  SignUp()));
+                        MaterialPageRoute(builder: (context) => SignUp()));
                   },
                   child: Container(
                     width: 250,

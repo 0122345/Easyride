@@ -1,7 +1,9 @@
+import 'package:eazyride_mobile/components/auth/otp_page.dart';
 import 'package:flutter/material.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:country_flags/country_flags.dart';
 import 'package:eazyride_mobile/components/auth/login.dart';
+import 'package:eazyride_mobile/theme/hex_color.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -46,9 +48,11 @@ class _SignUpState extends State<SignUp> {
 
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Sign Up Successful!')),
+          const SnackBar(content: Text(' first step Successful!')),
         );
         // Navigate to the next screen
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => OtpPage()));
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -188,7 +192,8 @@ class _SignUpState extends State<SignUp> {
             keyboardType: TextInputType.phone,
             decoration: InputDecoration(
               labelText: 'Phone Number',
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
             ),
             validator: (value) {
               if (value == null || value.trim().isEmpty) {
@@ -232,7 +237,7 @@ class _SignUpState extends State<SignUp> {
       child: ElevatedButton(
         onPressed: _isLoading ? null : _handleSignUp,
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.amber,
+          backgroundColor: HexColor("#EDAE10"),
           padding: const EdgeInsets.symmetric(vertical: 16),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
@@ -259,7 +264,10 @@ class _SignUpState extends State<SignUp> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Align(alignment:Alignment.topLeft ,child: const Icon(Icons.check_circle, color: Colors.green, size: 20)),
+        Align(
+            alignment: Alignment.topLeft,
+            child:
+                const Icon(Icons.check_circle, color: Colors.green, size: 20)),
         const SizedBox(width: 8),
         Flexible(
           child: Text.rich(
@@ -269,12 +277,14 @@ class _SignUpState extends State<SignUp> {
               children: [
                 TextSpan(
                   text: "Terms of service",
-                  style: TextStyle(color: Colors.amber, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      color: HexColor("#FEC400"), fontWeight: FontWeight.bold),
                 ),
                 const TextSpan(text: " and "),
                 TextSpan(
                   text: "Privacy policy",
-                  style: TextStyle(color: Colors.amber, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      color: HexColor("#FEC400"), fontWeight: FontWeight.bold),
                 ),
               ],
             ),
@@ -296,7 +306,8 @@ class _SignUpState extends State<SignUp> {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Text("or", style: TextStyle(color: Colors.grey[600], fontSize: 14)),
+          child: Text("or",
+              style: TextStyle(color: Colors.grey[600], fontSize: 14)),
         ),
         Expanded(
           child: Divider(
@@ -328,8 +339,10 @@ class _SignUpState extends State<SignUp> {
         width: 50,
         height: 50,
         decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: Colors.grey[200],
+          shape: BoxShape.rectangle,
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: Colors.black, width: 1),
         ),
         child: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -341,11 +354,10 @@ class _SignUpState extends State<SignUp> {
 
   Widget _buildSignInOption(BuildContext context) {
     return GestureDetector(
-                onTap: (){
-                  Navigator.push(context,
-                        MaterialPageRoute(
-                          builder: (context) =>  LoginPage()));
-                } ,
+      onTap: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => LoginPage()));
+      },
       child: Center(
         child: Text.rich(
           TextSpan(
@@ -354,7 +366,8 @@ class _SignUpState extends State<SignUp> {
             children: [
               TextSpan(
                 text: "Sign in",
-                style: TextStyle(color: Colors.amber, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    color: HexColor("#FEC400"), fontWeight: FontWeight.bold),
               ),
             ],
           ),

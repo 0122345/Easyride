@@ -18,59 +18,71 @@ class Homepage extends StatelessWidget {
           height: 400,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
-            
             children: [
               //TODO:animation
               Column(
-               // spacing: 10, byanze
+                // spacing: 10, byanze
                 children: [
-                  SizedBox(height:10),
+                  SizedBox(height: 10),
                   Text(
                     'Enable Your location',
                     style: TextStyle(
                       fontSize: 20,
                     ),
                   ),
-                   SizedBox(height:10),
-                  Text(
-                    'Choose your location to start find the request around you',
-                    style: TextStyle(
-                      fontSize: 12,
-                      
+                  SizedBox(height: 10),
+                  Text.rich(
+                    TextSpan(
+                      text: "Choose your location to start find the",
+                      style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+                      children: [
+                        TextSpan(
+                          text: "   request around you",
+                          style: TextStyle(
+                              color: Colors.grey[600],
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 10),
+                  GestureDetector(
+                    // TODO: directing to enabling location
+                    child: Container(
+                      width: 250,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        color: Colors.yellow,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'use my location',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                   SizedBox(height:10),
-                   GestureDetector(
-                    // TODO: directing to enabling location
-                     child: Container(
-                        width: 250,
-                        height: 50,
-                        decoration: BoxDecoration(
-                         color: Colors.yellow,
-                         borderRadius: BorderRadius.circular(12),
-                        ),
-                          child: Center(
-                            child: Text('use my location',
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
-                            ),
-                          ),
-                      ),
-                   ),
-                    SizedBox(height:10),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context, MaterialPageRoute(builder: (context) => WelcmScreen()));
-                      },
-                      child: Text('Skip for now',
+                  SizedBox(height: 10),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => WelcmScreen()));
+                    },
+                    child: Text(
+                      'Skip for now',
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
                       ),
-                                         ),
                     ),
-                    SizedBox(height:40),
+                  ),
+                  SizedBox(height: 40),
                 ],
               ),
             ],
