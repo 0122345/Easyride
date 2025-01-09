@@ -42,6 +42,9 @@ dependencies:
   country_picker: ^2.0.27
   country_flags: ^3.2.0
   pin_code_fields: ^8.0.1
+  flutter_map: ^7.0.2
+  mapbox_maps_flutter: ^2.5.0
+  latlong2: ^0.9.1
 
 dev_dependencies:
   flutter_test:
