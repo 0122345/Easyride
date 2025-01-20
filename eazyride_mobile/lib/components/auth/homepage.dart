@@ -54,6 +54,16 @@ class _HomepageState extends State<Homepage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: IconButton(
+                                    onPressed:  (){
+                                      //TODO: Add functionality to close the dialog
+                                     // Navigator.pop(context);
+                                    },
+                                     icon: Icon(Icons.close),),
+                    ),
+
                     Column(
                       children: [
                         const SizedBox(height: 10),
@@ -92,14 +102,14 @@ class _HomepageState extends State<Homepage> {
                               color: Colors.yellow,
                               borderRadius: BorderRadius.circular(12),
                             ),
-                            child: const Center(
-                              child: Text(
-                                'Use my location',
-                                style: TextStyle(
-                                  color: Colors.white,
+                            child:  const Center(
+                                  child: Text(
+                                    'Use my location',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
                           ),
                         ),
                         const SizedBox(height: 10),
