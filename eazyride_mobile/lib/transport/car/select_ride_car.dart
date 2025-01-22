@@ -1,3 +1,4 @@
+import 'package:eazyride_mobile/transport/car/car_detail.dart';
 import 'package:flutter/material.dart';
 
 class SelectCarRide extends StatelessWidget {
@@ -34,7 +35,7 @@ class SelectCarRide extends StatelessWidget {
     ),
   ];
 
-   SelectCarRide({Key? key}) : super(key: key);
+  SelectCarRide({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -150,7 +151,7 @@ class CarCard extends StatelessWidget {
                           fontSize: 18.0,
                           fontWeight: FontWeight.bold,
                         ),
-                        overflow: TextOverflow.ellipsis,  
+                        overflow: TextOverflow.ellipsis,
                       ),
                       const SizedBox(height: 8.0),
                       Text(
@@ -182,15 +183,18 @@ class CarCard extends StatelessWidget {
                 const SizedBox(width: 16.0),
                 Image.asset(
                   car.image,
-                  height: 50,  
-                  width: 80,  
+                  height: 50,
+                  width: 80,
                   fit: BoxFit.cover,
                 ),
               ],
             ),
             const SizedBox(height: 16.0),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+             context, MaterialPageRoute(builder: (context) => CarDetail()));
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.transparent,
                 side: const BorderSide(color: Colors.orange),
