@@ -1,6 +1,7 @@
 import 'package:eazyride_mobile/theme/hex_color.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:eazyride_mobile/transport/home_transport.dart';
 
 class OtpPage extends StatefulWidget {
   const OtpPage({super.key});
@@ -25,7 +26,9 @@ class _OtpPageState extends State<OtpPage> {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('OTP Verified Successfully!')),
         );
-        //TODO: Navigate to next screen after verification
+
+         Navigator.push(
+            context, MaterialPageRoute(builder: (context) =>  HomeTransp()));
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(

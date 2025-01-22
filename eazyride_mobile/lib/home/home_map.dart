@@ -11,6 +11,9 @@ class HomeMap extends StatefulWidget {
 class _HomeMapState extends State<HomeMap> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(),
+      body: Column(),
+    );
   }
 }
