@@ -1,4 +1,5 @@
 import 'package:eazyride_mobile/theme/hex_color.dart';
+import 'package:eazyride_mobile/transport/select_ride_car.dart';
 import 'package:flutter/material.dart';
 
 class HomeTransp extends StatelessWidget {
@@ -28,9 +29,15 @@ class HomeTransp extends StatelessWidget {
                           imagePath: "assets/images/Bike.png",
                           text: "Bike",
                         ),
-                        _buildCard(
-                          imagePath: "assets/images/Car.png",
-                          text: "Car",
+                        GestureDetector(
+                          onTap: (){
+                             Navigator.push(
+                              context, MaterialPageRoute(builder: (context) => SelectCarRide()));
+                          },
+                          child: _buildCard(
+                            imagePath: "assets/images/Car.png",
+                            text: "Car",
+                          ),
                         ),
                         _buildCard(
                           imagePath: "assets/images/Cyclebicyle.png",
