@@ -1,7 +1,7 @@
 import 'package:eazyride_mobile/components/auth/welcm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong2/latlong.dart';  
+import 'package:latlong2/latlong.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -11,8 +11,32 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  late AnimationController _animationController;
+  late Animation<double> _animation;
   // For storing the map controller
   MapController mapController = MapController();
+
+
+  @override
+  void initState() {
+    // TODO: implement initState no animation for now
+    // _animationController = AnimationController(
+    //   vsync: true,
+    //   duration: Duration(seconds: 1),  
+    // )..repeat(reverse: true);  
+
+    // _animation = Tween<double>(begin: 1.0, end: 1.5).animate(
+    //   CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
+    // );
+    super.initState();
+  }
+
+@override
+void dispose() {
+  _animationController.dispose();
+  super.dispose();
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +45,12 @@ class _HomepageState extends State<Homepage> {
         children: [
           FlutterMap(
             options: MapOptions(
-             // center: LatLng(30.0444, -1.9441),
-             // zoom: 12.0,
-            ),
+                // center: LatLng(30.0444, -1.9441),
+                // zoom: 12.0,
+                ),
             children: [
               TileLayer(
-                   urlTemplate: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                urlTemplate: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
               ),
               MarkerLayer(
                 markers: [
@@ -54,16 +78,21 @@ class _HomepageState extends State<Homepage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: IconButton(
-                                    onPressed:  (){
-                                      //TODO: Add functionality to close the dialog
-                                     // Navigator.pop(context);
-                                    },
-                                     icon: Icon(Icons.close),),
-                    ),
+                    // AnimatedBuilder(
+                    //   animation: _animationController,
+                    //   builder: (context, child) {
+                    //     return Transform.scale(
+                    //       scale: _animation.value,
+                    //       child: Icon(
+                    //         Icons.location_on,
+                    //         color: Colors.amber,
+                    //         size: 60.0,
+                    //       ),
+                    //     );
+                    //   },
+                    // ),
 
+                    Image.asset("assets/images/location.png"),
                     Column(
                       children: [
                         const SizedBox(height: 10),
@@ -102,14 +131,14 @@ class _HomepageState extends State<Homepage> {
                               color: Colors.yellow,
                               borderRadius: BorderRadius.circular(12),
                             ),
-                            child:  const Center(
-                                  child: Text(
-                                    'Use my location',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                    ),
-                                  ),
+                            child: const Center(
+                              child: Text(
+                                'Use my location',
+                                style: TextStyle(
+                                  color: Colors.white,
                                 ),
+                              ),
+                            ),
                           ),
                         ),
                         const SizedBox(height: 10),
@@ -141,3 +170,4 @@ class _HomepageState extends State<Homepage> {
     );
   }
 }
+

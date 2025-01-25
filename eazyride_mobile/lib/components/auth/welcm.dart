@@ -12,14 +12,17 @@ class WelcmScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Center(
         child: Column(
-          //  mainAxisAlignment: MainAxisAlignment.end,
-          mainAxisAlignment: MainAxisAlignment.center,
+           
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
 
           children: [
-            //TODO:animation
             Column(
-              // spacing: 10, byanze
               children: [
+                Image.asset(
+                  'assets/images/WelcomeScreen.png'
+                  ),
+
+                const SizedBox(height: 20.0),
                 Text(
                   'Welcome',
                   style: TextStyle(
@@ -32,24 +35,27 @@ class WelcmScreen extends StatelessWidget {
                   'Have a better sharing experience',
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
                 ),
-                SizedBox(height: 50),
+                SizedBox(height: 80),
                 GestureDetector(
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => SignUp()));
                   },
-                  child: Container(
-                    width: 250,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: HexColor("#EDAE10"),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Create an account',
-                        style: TextStyle(
-                          color: Colors.white,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    child: Container(
+                      width: double.infinity,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        color: HexColor("#EDAE10"),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Create an account',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ),
@@ -62,23 +68,26 @@ class WelcmScreen extends StatelessWidget {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => LoginPage()));
                   },
-                  child: Container(
-                    width: 250,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: HexColor("#FFFFFF"),
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(
-                        color: HexColor("#EDAE10"),
-                        style: BorderStyle.solid,
-                        strokeAlign: 1.0,
-                      ),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Log in',
-                        style: TextStyle(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    child: Container(
+                      width: double.infinity,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        color: HexColor("#FFFFFF"),
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(
                           color: HexColor("#EDAE10"),
+                          style: BorderStyle.solid,
+                          strokeAlign: 1.0,
+                        ),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Log in',
+                          style: TextStyle(
+                            color: HexColor("#EDAE10"),
+                          ),
                         ),
                       ),
                     ),

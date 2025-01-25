@@ -1,3 +1,4 @@
+import 'package:eazyride_mobile/home/home_map.dart';
 import 'package:eazyride_mobile/theme/hex_color.dart';
 import 'package:flutter/material.dart';
 
@@ -107,20 +108,14 @@ class _CarDetailState extends State<CarDetail> {
                           ],
                         ),
                       ),
-
                       const SizedBox(height: 16),
-
                       Image.asset(
                         currentCar['image'],
-                        height: 250,
-                        width: 500,
+                        height: 200,
+                        width: 450,
                         fit: BoxFit.cover,
                       ),
-
                       const SizedBox(height: 16),
-
-                      //TODO: Specifications Section
-
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Align(
@@ -135,38 +130,44 @@ class _CarDetailState extends State<CarDetail> {
                         ),
                       ),
                       const SizedBox(height: 8),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children:
-                            currentCar['specs'].entries.map<Widget>((entry) {
-                          return Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(
-                                  color: HexColor("#FED857"), width: 2),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 8.0, vertical: 12.0),
-                              child: Column(
-                                children: [
-                                  Text(entry.key,
-                                      style:
-                                          const TextStyle(color: Colors.grey)),
-                                  const SizedBox(height: 4),
-                                  Text(
-                                    entry.value,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ],
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment
+                              .start, // Or MainAxisAlignment.spaceEvenly depending on your need
+                          children:
+                              currentCar['specs'].entries.map<Widget>((entry) {
+                            return Container(
+                              margin: const EdgeInsets.only(
+                                  right:
+                                      8.0), // Optional: to add space between containers
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(
+                                    color: HexColor("#FED857"), width: 2),
                               ),
-                            ),
-                          );
-                        }).toList(),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 8.0, vertical: 12.0),
+                                child: Column(
+                                  children: [
+                                    Text(entry.key,
+                                        style: const TextStyle(
+                                            color: Colors.grey)),
+                                    const SizedBox(height: 4),
+                                    Text(
+                                      entry.value,
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          }).toList(),
+                        ),
                       ),
                       const SizedBox(height: 16),
-
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Align(
@@ -180,7 +181,6 @@ class _CarDetailState extends State<CarDetail> {
                           ),
                         ),
                       ),
-
                       const SizedBox(height: 8),
                       Column(
                         children:
@@ -226,7 +226,7 @@ class _CarDetailState extends State<CarDetail> {
           OutlinedButtonTheme(
             data: OutlinedButtonThemeData(
               style: OutlinedButton.styleFrom(
-                backgroundColor: Colors.transparent, 
+                backgroundColor: Colors.transparent,
                 side: BorderSide(
                   color: HexColor("#FED857"),
                   width: 2,
@@ -236,7 +236,6 @@ class _CarDetailState extends State<CarDetail> {
                 ),
                 padding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),
                 textStyle: TextStyle(fontSize: 16.0),
-                
               ),
             ),
             child: Row(
@@ -252,7 +251,10 @@ class _CarDetailState extends State<CarDetail> {
                 ),
                 SizedBox(height: 70),
                 OutlinedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomeMap()));
+                  },
                   style: OutlinedButton.styleFrom(
                     backgroundColor: HexColor("#EDAE10"),
                     foregroundColor: Colors.white,
