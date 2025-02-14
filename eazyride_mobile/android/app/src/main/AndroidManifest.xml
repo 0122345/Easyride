@@ -1,4 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<!-- Request permissions for accessing the internet (required for Google Maps) -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    
+    <!-- Permissions to access fine location (more accurate) and coarse location (less accurate) -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    
+    <!-- Optional: Background location access for Android 10+ -->
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
     <application
         android:label="eazyride_mobile"
         android:name="${applicationName}"
@@ -20,6 +29,9 @@
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
               />
+              <meta-data
+               android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyCeO0TgeVuvM-qdUFuzg0vqrOUizU9AQ7U"/>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

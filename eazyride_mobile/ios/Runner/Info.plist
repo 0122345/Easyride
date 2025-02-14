@@ -47,5 +47,9 @@
 		<true/>
 		<key>UIStatusBarHidden</key>
 		<false/>
+		<key>NSLocationWhenInUseUsageDescription</key>
+          <string>We need your location for Google Maps functionality.</string>
+          <key>NSLocationAlwaysUsageDescription</key>
+          <string>We need your location for Google Maps functionality.</string>
 	</dict>
 </plist>

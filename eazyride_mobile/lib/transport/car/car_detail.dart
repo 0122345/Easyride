@@ -253,7 +253,7 @@ class _CarDetailState extends State<CarDetail> {
                 OutlinedButton(
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HomeMap()));
+                        MaterialPageRoute(builder: (context) => HomeWrapper()));
                   },
                   style: OutlinedButton.styleFrom(
                     backgroundColor: HexColor("#EDAE10"),
